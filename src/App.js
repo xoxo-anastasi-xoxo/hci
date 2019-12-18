@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {Header} from './blocks/Header';
+import "react-simple-keyboard/build/css/index.css";
+import "./index.css";
+import { Route, Switch } from 'react-router-dom';
+import {Train} from "./pages/Train";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+export const App = () => (
+    <>
+        <Header/>
+        <Switch>
+            <Route exact path='/'/>
+            <Route exact path='/auth'/>
+            <Route exact path='/exp1'/>
+            <Route exact path='/exp2'/>
+            <Route exact path='/train' component={Train}/>
+        </Switch>
+    </>
+);
