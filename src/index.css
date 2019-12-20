@@ -116,3 +116,27 @@ input {
 .auth button:active {
   background-color: #e5e5e5;
 }
+
+.done {
+  width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1ebd1e;
+  box-shadow: 0 0 3px -1px rgba(0,0,0,.3);
+  height: 40px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 5px;
+  border-bottom: 1px solid #b5b5b5;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.done:focus {
+  outline: none;
+}
+
+.done:active {
+  background-color: #e5e5e5;
+}

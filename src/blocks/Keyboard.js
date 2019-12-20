@@ -8,6 +8,7 @@ export class MyKeyboard extends Component {
     };
 
     onChange = input => {
+        this.props.inputRef.current = input;
         this.setState({
             input: input
         });
@@ -27,18 +28,6 @@ export class MyKeyboard extends Component {
         this.onChange(this.state.input + button);
     };
 
-    onChangeInput = event => {
-        let input = event.target.value;
-        this.setState(
-            {
-                input: input
-            },
-            () => {
-                this.keyboard.setInput(input);
-            }
-        );
-    };
-
     render() {
         return (
             <div>
@@ -49,8 +38,7 @@ export class MyKeyboard extends Component {
                         }
                     }
                     value={this.state.input}
-                    placeholder={"Tap on the virtual keyboard to start"}
-                    onChange={e => this.onChangeInput(e)}
+                    placeholder={this.props.keyboardMode ? "Кликните по букве" : 'Задержите курсор на букве'}
                 />
                 <div className='simple-keyboard hg-theme-default hg-layout-default myTheme hg-layout-default'>
                     {
