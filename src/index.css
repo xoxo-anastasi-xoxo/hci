@@ -59,6 +59,7 @@ input {
 
 .header__title {
   font-weight: 900;
+  text-decoration: none;
 }
 
 .header__login {
@@ -71,6 +72,47 @@ input {
   color: rgb(117, 117, 117);
  }
 
-.header__login:active {
-  background-color: #efefef;
+.trigger-container {
+  border-radius: 10px;
+  margin: 30px auto;
+  width: 500px;
+  display: flex;
+}
+
+.trigger-hint {
+  margin: 0 10px;
+}
+
+.auth {
+  margin: 10px auto;
+  width: 500px;
+}
+
+.auth button,
+.auth label {
+  color: #464646;
+  font-size: larger;
+}
+.auth input {
+  height: 50px;
+}
+.auth button {
+  border-radius: 5px;
+  box-shadow: 0 0 3px -1px rgba(0,0,0,.3);
+  box-sizing: border-box;
+  padding: 5px;
+  background: #fff;
+  border-bottom: 1px solid #b5b5b5;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+.auth button:focus {
+  outline: none;
+}
+
+.auth button:active {
+  background-color: #e5e5e5;
 }
