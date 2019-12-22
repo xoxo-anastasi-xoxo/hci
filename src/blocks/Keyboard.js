@@ -4,29 +4,48 @@ import {KeyboardButton} from './KeyboardButton';
 
 export class MyKeyboard extends Component {
     state = {
-        input: ""
+        input: "",
+        last: '',
+        correctionsNumber: 0
     };
 
-    onChange = input => {
-        this.props.inputRef.current = input;
-        this.setState({
-            input: input
-        });
+    onChange = (input, button) => {
+        const newState = {
+            input: input,
+            last: button,
+            correctionsNumber: this.state.correctionsNumber + (button === "{bksp}" ? 1 : 0)
+        };
+        this.props.inputRef.current = newState;
+        this.setState(newState);
     };
 
     onKeyPress = button => {
-        if (button === "") return;
+        if (button === "" || (button === "{bksp}" && this.state.last === "{bksp}")) return;
         if (button === "{bksp}") {
-            this.onChange(this.state.input.slice(0, this.state.input.length - 1));
+            this.onChange(this.state.input.slice(0, this.state.input.length - 1), button);
             return;
         }
         if (button === "{space}") {
-            this.onChange(this.state.input + ' ');
+            this.onChange(this.state.input + ' ', button);
             return;
         }
 
-        this.onChange(this.state.input + button);
+        this.onChange(this.state.input + button, button);
     };
+
+    onClear = () => {
+        const newState = {
+            input: '',
+            last: '',
+            correctionsNumber: 0
+        };
+        this.setState(newState);
+        this.props.inputRef.current = newState;
+    };
+
+    componentDidMount() {
+        this.props.clearRef.current = this.onClear;
+    }
 
     render() {
         return (

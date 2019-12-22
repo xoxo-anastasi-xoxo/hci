@@ -11,7 +11,7 @@ export const Trigger = ({setKeyboardMode}) => {
 
     return (
         <div className='trigger-container'>
-            <Switch onChange={onChange} checked={checked} uncheckedIcon={false} checkedIcon={false} offColor={'#59c9fb'}/>
+            <Switch onChange={onChange} checked={checked} uncheckedIcon={false} checkedIcon={false} offColor={'#ffc107'}/>
             <div className='trigger-hint'>
                 {
                     checked ?

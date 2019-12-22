@@ -13,7 +13,7 @@ export const Header = () => {
             color: '#757575',
             display: 'flex'
         }}>
-        <Link to='/' className='header__title' style={{color: location === '/' ? 'black' : '#757575'}}>HCI</Link>
+        <Link to='/' onClick={() => onClick('/')}  className='header__title' style={{color: location === '/' ? 'black' : '#757575'}}>HCI</Link>
         <Link to='/train' onClick={() => onClick('/train')} className='header__menu-element'
               style={{color: location === '/train' ? 'black' : '#757575'}}>Тренировка</Link>
         <Link to='/exp1' onClick={() => onClick('/exp1')} className='header__menu-element'

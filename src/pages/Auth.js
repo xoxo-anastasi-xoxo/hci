@@ -1,20 +1,26 @@
-import React, {useCallback, useRef, useState} from "react";
+import React, {useCallback, useRef} from "react";
 import FileSaver from 'file-saver';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {CLEAR_ALL} from "../actions/actions";
 
 export const Auth = () => {
     const inputRef = useRef();
     const state = useSelector(state => state);
+    const dispatch = useDispatch();
     const onSave = useCallback(() => {
         const text = inputRef.current && inputRef.current.value;
-        console.log(state, text);
-        // const file = new File([text, "Hello, world!"], "hello world.txt", {type: "text/plain;charset=utf-8"});
-        // FileSaver.saveAs(file);
-    });
+        const file = new File(
+            [JSON.stringify({userName: text, ...state}, null, '\t')],
+            `hci_exp_with_${text.toLowerCase().replace(' ', '_')}.txt`,
+            {type: "text/plain;charset=utf-8"}
+            );
+        FileSaver.saveAs(file);
+    }, [inputRef, state]);
 
     return <div className='auth'>
-        <label>Имя</label>
+        <label>Имя респондента</label>
         <input ref={inputRef}/>
         <button onClick={onSave}>Сохранить данные эксперимента</button>
+        <button onClick={() => {dispatch({type: CLEAR_ALL})}}>Очистить данные эксперимента</button>
     </div>;
 };
