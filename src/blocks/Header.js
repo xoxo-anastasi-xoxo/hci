@@ -15,7 +15,7 @@ export const Header = () => {
         }}>
         <Link to='/hci' onClick={() => onClick('/hci')}  className='header__title' style={{color: location === '/hci' ? 'black' : '#757575'}}>HCI</Link>
         <Link to='/hci/train' onClick={() => onClick('/hci/train')} className='header__menu-element'
-              style={{color: location === '.hci/train' ? 'black' : '#757575'}}>Тренировка</Link>
+              style={{color: location === '/hci/train' ? 'black' : '#757575'}}>Тренировка</Link>
         <Link to='/hci/exp1' onClick={() => onClick('/hci/exp1')} className='header__menu-element'
               style={{color: location === '/hci/exp1' ? 'black' : '#757575'}}>Эксперимент
             1</Link>
