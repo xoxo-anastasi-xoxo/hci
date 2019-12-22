@@ -12,10 +12,10 @@ export const App = () => (
     <>
         <Header/>
         <Switch>
-            <Route exact path='/' component={Auth}/>
-            <Route exact path='/exp1' component={Exp1}/>
-            <Route exact path='/exp2' component={Exp2}/>
-            <Route exact path='/train' component={Train}/>
+            <Route exact path='/hci' component={Auth}/>
+            <Route exact path='/hci/exp1' component={Exp1}/>
+            <Route exact path='/hci/exp2' component={Exp2}/>
+            <Route exact path='/hci/train' component={Train}/>
         </Switch>
     </>
 );
