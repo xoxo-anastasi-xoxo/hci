@@ -4,9 +4,11 @@ export const exp1 = (
     state = [],
     action,
 ) => {
+    console.log( action);
     switch (action.type) {
         case ADD_EXP1_INFO: {
-            return state.push(action.payload);
+            state.push(action.payload);
+            return state;
         }
         case CLEAR_ALL: {
             return [];

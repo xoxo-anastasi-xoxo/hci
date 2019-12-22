@@ -6,14 +6,18 @@ export class MyKeyboard extends Component {
     state = {
         input: "",
         last: '',
-        correctionsNumber: 0
+        correctionsNumber: 0,
+        startTime: undefined,
+        time: undefined,
     };
 
     onChange = (input, button) => {
         const newState = {
             input: input,
             last: button,
-            correctionsNumber: this.state.correctionsNumber + (button === "{bksp}" ? 1 : 0)
+            correctionsNumber: this.state.correctionsNumber + (button === "{bksp}" ? 1 : 0),
+            startTime: this.state.startTime || Date.now(),
+            time: Date.now() - (this.state.startTime || Date.now()),
         };
         this.props.inputRef.current = newState;
         this.setState(newState);
@@ -37,7 +41,9 @@ export class MyKeyboard extends Component {
         const newState = {
             input: '',
             last: '',
-            correctionsNumber: 0
+            correctionsNumber: 0,
+            startTime: undefined,
+            time: undefined,
         };
         this.setState(newState);
         this.props.inputRef.current = newState;
@@ -90,6 +96,7 @@ export class MyKeyboard extends Component {
                                         <KeyboardButton
                                             key={letter + index + i} letter={letter}
                                             onKeyPress={button => this.onKeyPress(button)}
+                                            isClickable={this.props.keyboardMode}
                                         />
                                     ))}
                                 </div>

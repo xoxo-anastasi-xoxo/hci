@@ -14,7 +14,7 @@ export const KeyboardButton = memo(({
                 if (!isClickable) {
                     timer.current = setTimeout(() => {
                         onKeyPress(letter);
-                    }, 1000);
+                    }, 600);
                 }
             }}
             onMouseLeave={() => {
