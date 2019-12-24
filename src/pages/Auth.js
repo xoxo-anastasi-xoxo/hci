@@ -11,7 +11,7 @@ export const Auth = () => {
         const text = inputRef.current && inputRef.current.value;
         const file = new File(
             [JSON.stringify({userName: text, ...state}, null, '\t')],
-            `hci_exp_with_${text.toLowerCase().replace(' ', '_')}.txt`,
+            `hci_exp_with_${text.toLowerCase().replace(/ /g, '_')}.txt`,
             {type: "text/plain;charset=utf-8"}
             );
         FileSaver.saveAs(file);
