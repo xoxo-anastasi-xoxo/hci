@@ -1,3 +1,11 @@
 .header__menu-element {
   margin: 0 20px;
 }
+
+.simple-keyboard.hg-theme-default.hg-layout-default.myTheme.hg-layout-default {
+  width: 600px;
+}
+
+.simple-keyboard.hg-theme-default.hg-layout-default.myTheme.hg-layout-default .hg-button {
+  height: 45px;
+}

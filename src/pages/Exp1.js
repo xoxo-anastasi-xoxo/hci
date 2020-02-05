@@ -7,7 +7,14 @@ import {Forget} from "../blocks/Forget";
 import {Trigger} from "../blocks/Trigger";
 
 const COLORS = ['red', '#BFFF00', 'black', 'blue', 'green', 'grey', 'pink', 'yellow', 'white', '#9966CC', 'orange', 'azure', 'violet', 'brown', 'blue', 'pink', 'black', 'yellow',];
+const TIME = [500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000];
 let CURRENT_COLOR = 0;
+
+function randomInteger(min, max) {
+    // получить случайное число от (min-0.5) до (max+0.5)
+    let rand = min - 0.5 + Math.random() * (max - min + 1);
+    return Math.round(rand);
+}
 
 export const Exp1 = () => {
     const [expMode, setExpMode] = useState(0);
@@ -19,11 +26,22 @@ export const Exp1 = () => {
     });
 
     const onClickDone = () => {
+        const {
+            startTime,
+            input,
+            correctionsNumber,
+            time,
+            mistakes
+        } = inputRef.current;
         dispatch({
             type: ADD_EXP1_INFO,
             payload: {
-                ...inputRef.current,
-                currentGroup: keyboardMode ? 'touch pad' : 'leap motion'
+                startTime: startTime.toString(),
+                input,
+                correctionsNumber,
+                time: time / 1000,
+                currentGroup: keyboardMode ? 'touch pad' : 'leap motion',
+                mistakes
             }
         });
 
@@ -54,13 +72,17 @@ export const Exp1 = () => {
                                     onClick={() => {
                                         CURRENT_COLOR = (CURRENT_COLOR + 1) % COLORS.length;
                                         setDivColor(COLORS[CURRENT_COLOR]);
-
-                                        const interv = setInterval(() => {
+                                        let curST = undefined;
+                                        const fn = function intervFn() {
                                             CURRENT_COLOR = (CURRENT_COLOR + 1) % COLORS.length;
                                             setDivColor(COLORS[CURRENT_COLOR]);
-                                        }, 1200);
+                                            const time = TIME[randomInteger(0, TIME.length - 1)];
+                                            curST = setTimeout(intervFn, time)
+                                        };
+
+                                        fn();
                                         setTimeout(() => {
-                                            clearInterval(interv);
+                                            clearInterval(curST);
                                             setExpMode(1);
                                         }, 8000)
                                     }}

@@ -4,7 +4,7 @@ export const exp1 = (
     state = [],
     action,
 ) => {
-    console.log( action);
+    console.log(action);
     switch (action.type) {
         case ADD_EXP1_INFO: {
             state.push(action.payload);

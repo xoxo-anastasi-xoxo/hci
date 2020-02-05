@@ -9,15 +9,23 @@ export class MyKeyboard extends Component {
         correctionsNumber: 0,
         startTime: undefined,
         time: undefined,
+        mistakes: []
     };
 
-    onChange = (input, button) => {
+    onChange = (input, button, prevInput) => {
+        if (button === "{bksp}") {
+            this.state.mistakes.push({
+                inputBefore: prevInput,
+                time: (Date.now() - (this.state.startTime || Date.now())) / 1000,
+            });
+        }
         const newState = {
             input: input,
             last: button,
             correctionsNumber: this.state.correctionsNumber + (button === "{bksp}" ? 1 : 0),
             startTime: this.state.startTime || Date.now(),
             time: Date.now() - (this.state.startTime || Date.now()),
+            mistakes: this.state.mistakes,
         };
         this.props.inputRef.current = newState;
         this.setState(newState);
@@ -26,7 +34,7 @@ export class MyKeyboard extends Component {
     onKeyPress = button => {
         if (button === "" || (button === "{bksp}" && this.state.last === "{bksp}")) return;
         if (button === "{bksp}") {
-            this.onChange(this.state.input.slice(0, this.state.input.length - 1), button);
+            this.onChange(this.state.input.slice(0, this.state.input.length - 1), button, this.state.input);
             return;
         }
         if (button === "{space}") {

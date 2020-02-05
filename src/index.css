@@ -13,7 +13,7 @@ code {
 }
 
 input {
-  width: 500px;
+  width: 600px;
   height: 100px;
   padding: 20px;
   font-size: 20px;
@@ -29,7 +29,7 @@ input {
 .simple-keyboard.hg-theme-default.myTheme {
   border-radius: 10px;
   margin: 10px auto;
-  width: 500px;
+  width: 600px;
 }
 
 .simple-keyboard.hg-layout-default .hg-button.hg-red.hg-red2 {
@@ -75,7 +75,7 @@ input {
 .trigger-container {
   border-radius: 10px;
   margin: 30px auto;
-  width: 500px;
+  width: 600px;
   display: flex;
 }
 
@@ -85,7 +85,7 @@ input {
 
 .auth {
   margin: 10px auto;
-  width: 500px;
+  width: 600px;
 }
 
 .auth button,
@@ -119,7 +119,7 @@ input {
 }
 
 .done {
-   width: 500px;
+   width: 600px;
    display: flex;
    align-items: center;
    justify-content: center;
@@ -143,7 +143,7 @@ input {
 }
 
 .forget {
-  width: 500px;
+  width: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -175,7 +175,7 @@ input {
 }
 .start-button {
   margin: 100px auto;
-  width: 500px;
+  width: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -196,4 +196,9 @@ input {
 
 .start-button:active {
   background-color: #e5e5e5;
+}
+
+
+.simple-keyboard.hg-theme-default.hg-layout-default.myTheme.hg-layout-default .hg-button {
+  height: 45px;
 }

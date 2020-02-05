@@ -4,7 +4,7 @@ import {Trigger} from "../blocks/Trigger";
 import {Done} from "../blocks/Done";
 import {Forget} from "../blocks/Forget";
 import {useDispatch} from "react-redux";
-import {ADD_EXP2_INFO} from "../actions/actions";
+import {ADD_EXP1_INFO, ADD_EXP2_INFO} from "../actions/actions";
 
 export const Exp2 = () => {
     const [keyboardMode, setKeyboardMode] = useState(false);
@@ -13,11 +13,22 @@ export const Exp2 = () => {
     const clearRef = useRef(() => {});
 
     const onClickDone = () => {
+        const {
+            startTime,
+            input,
+            correctionsNumber,
+            time,
+            mistakes
+        } = inputRef.current;
         dispatch({
             type: ADD_EXP2_INFO,
             payload: {
-                ...inputRef.current,
-                currentGroup: keyboardMode ? 'touch pad' : 'leap motion'
+                startTime: (new Date(startTime)).toLocaleString(),
+                input,
+                correctionsNumber,
+                time: time / 1000,
+                currentGroup: keyboardMode ? 'touch pad' : 'leap motion',
+                mistakes
             }
         });
 
